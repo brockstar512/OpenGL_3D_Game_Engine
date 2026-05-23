@@ -8,6 +8,8 @@ source/Engine.h
 source/Engine.cpp
 source/Application.h
 source/Application.cpp
+source/input/InputManager.h
+source/input/InputManager.cpp
 
 )
 
