@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "Engine.h"
 #include "Application.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -114,5 +115,9 @@ namespace engine
 	InputManager& Engine::GetInputManager()
 	{
 		return m_inputManager;
+	}
+	GraphicsAPI& engine::Engine::GetGraphicsAPI()
+	{
+		return m_graphicsAPI;
 	}
 }
