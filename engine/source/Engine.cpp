@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "Engine.h"
+#include "Engine.h"
 #include "Application.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -88,6 +89,11 @@ namespace engine
 			m_lastTimePoint = now;
 
 			m_application->Update(deltaTime);
+			m_graphicsAPI.SetClearColor(1.0f,1.0f,1.0f,1.0f);
+			m_graphicsAPI.ClearBuffers();
+
+			m_renderQueue.Draw(m_graphicsAPI);
+
 			glfwSwapBuffers(m_window);
 		}
 	}
@@ -119,5 +125,9 @@ namespace engine
 	GraphicsAPI& engine::Engine::GetGraphicsAPI()
 	{
 		return m_graphicsAPI;
+	}
+	RenderQueue& engine::Engine::GetRenderQueue()
+	{
+		return m_renderQueue;
 	}
 }

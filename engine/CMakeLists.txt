@@ -18,6 +18,8 @@ source/render/Material.h
 source/render/Material.cpp
  source/render/Mesh.h
  source/render/Mesh.cpp
+ source/render/RenderQueue.h
+ source/render/RenderQueue.cpp
 
 )
 

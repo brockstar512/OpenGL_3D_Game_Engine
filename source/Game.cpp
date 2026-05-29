@@ -80,6 +80,13 @@ void Game::Update(float deltaTime)
 		std::cout << "[A] Button is pressed " << std::endl;
 
 	}
+
+    engine::RenderCommand command;
+    command.material = &m_material;
+    command.mesh = m_mesh.get();
+
+    auto& renderQueue = engine::Engine::GetInstance().GetRenderQueue();
+    renderQueue.Submit(command);
 }
 
 void Game::Destroy()

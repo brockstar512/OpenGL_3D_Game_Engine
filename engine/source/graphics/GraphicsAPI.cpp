@@ -63,6 +63,7 @@ namespace engine
             shaderProgram->Bind();
         }
     }
+
     void GraphicsAPI::BindMaterial(Material* material)
     {
         if (material) 
@@ -70,6 +71,7 @@ namespace engine
             material->Bind();
         }
     }
+
     void GraphicsAPI::BindMesh(Mesh* mesh)
     {
         if (mesh)
@@ -77,6 +79,7 @@ namespace engine
             mesh->Bind();
         }
     }
+
     void GraphicsAPI::DrawMesh(Mesh* mesh)
     {
         if (mesh)
@@ -84,6 +87,17 @@ namespace engine
             mesh->Draw();
         }
     }
+
+    void GraphicsAPI::SetClearColor(float r, float g, float b, float a)
+    {
+        glClearColor(r, g, b, a);
+    }
+
+    void GraphicsAPI::ClearBuffers()
+    {
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
+
     GLuint GraphicsAPI::CreateVertexBuffer(const std::vector<float>& vertices)
     {
         GLuint VBO = 0;
@@ -93,6 +107,7 @@ namespace engine
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         return VBO;
     }
+
     GLuint GraphicsAPI::CreateIndexBuffer(const std::vector<uint32_t>& indices)
     {
         GLuint EBO = 0;

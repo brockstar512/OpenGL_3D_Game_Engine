@@ -20,6 +20,8 @@ namespace engine {
 		void BindMaterial(Material* material);
 		void BindMesh(Mesh* mesh);
 		void DrawMesh(Mesh* mesh);
+		void SetClearColor(float r, float g, float b, float a);
+		void ClearBuffers();
 		GLuint CreateVertexBuffer(const std::vector<float>& vertices);
 		GLuint CreateIndexBuffer(const std::vector<uint32_t>& indices);
 
