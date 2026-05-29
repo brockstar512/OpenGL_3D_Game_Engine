@@ -15,6 +15,7 @@ namespace engine
 		void Bind();
 		GLint GetUniformLocation(const std::string& name);
 		void SetUniform(const std::string& name, float value);
+		void SetUniform(const std::string& name, float v0, float v1);
 	private:
 		std::unordered_map<std::string, GLuint> m_uniformLocationCache;
 		GLuint m_shaderProgramId = 0;

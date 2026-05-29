@@ -2,6 +2,7 @@
 #include "ShaderProgram.h"
 #include "ShaderProgram.h"
 #include "ShaderProgram.h"
+#include "ShaderProgram.h"
 #include "graphics/ShaderProgram.h"
 
 namespace engine 
@@ -36,5 +37,10 @@ namespace engine
 		auto location = glGetUniformLocation(m_shaderProgramId, name.c_str());
 		glUniform1f(location, value);
 
+	}
+	void engine::ShaderProgram::SetUniform(const std::string& name, float v0, float v1)
+	{
+		auto location = glGetUniformLocation(m_shaderProgramId, name.c_str());
+		glUniform2f(location, v0, v1);
 	}
 }

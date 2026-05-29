@@ -23,3 +23,8 @@ int main()
 	engine.Destroy();
 	return 0;
 }
+/*
+  - Take a reference when null is never valid — the caller must always provide a real object. The type system enforces this and the
+  caller can't accidentally pass null.
+  - Take a pointer when null is intentionally meaningful — e.g. Unbind() behavior, or an optional parameter.
+  */
