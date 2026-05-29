@@ -35,15 +35,13 @@ A singleton. Owns and controls everything at the top level.
 - Runs the game loop: poll events → compute deltaTime → call `Application::Update()`
 
 ### `Application` — `engine/source/Application.h`
-Abstract base class that the game implements.
+Defines the contract between the engine and game code — the engine calls these three methods at the right times, and the game fills them in.
 
 ```
 virtual bool Init()
 virtual void Update(float deltaTime)
 virtual void Destroy()
 ```
-
-The game inherits from this and overrides all three.
 
 ### `InputManager` — `engine/source/input/InputManager.h`
 Tracks the pressed state of up to 256 keys in a `std::array<bool, 256>`.
@@ -54,7 +52,7 @@ Tracks the pressed state of up to 256 keys in a `std::array<bool, 256>`.
 - Game code calls `isKeyPressed(keyCode)` to read state
 
 ### `GraphicsAPI` — `engine/source/graphics/GraphicsAPI.h`
-Wraps raw OpenGL calls behind a cleaner interface.
+The only place in the engine that calls raw OpenGL directly — all other code goes through this so `gl*` calls are never scattered across the codebase.
 
 | Method | What it does |
 |---|---|
@@ -91,7 +89,7 @@ VertexLayout
 ```
 
 ### `Mesh` — `engine/source/render/Mesh.h`
-Owns a VAO, VBO, and optionally an EBO on the GPU.
+Represents a piece of geometry on the GPU and manages the lifetime of its GPU resources (VAO, VBO, and optionally EBO).
 
 Two constructors:
 - `Mesh(layout, vertices, indices)` — indexed draw. Vertices can be shared between triangles. Uses `glDrawElements`.
@@ -113,7 +111,7 @@ Pairs a `ShaderProgram` with a set of uniform values.
 ## Game Layer
 
 ### `Game` — `source/Game.h`
-Inherits from `Application`. Implements the actual game logic.
+The concrete application — sets up the scene on init and drives per-frame logic. This is where game-specific code lives, isolated from the engine.
 
 **`Init()`**
 1. Defines vertex and fragment shader source strings (GLSL 330 core)
